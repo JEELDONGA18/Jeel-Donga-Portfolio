@@ -10,9 +10,9 @@ import { Mail, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin } from "@/components/shared/brand-icons";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "jeeldonga24@gmail.com", href: "mailto:jeeldonga24@gmail.com" },
-  { icon: Github, label: "GitHub", value: "github.com/jeeldonga", href: "https://github.com/jeeldonga" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/jeeldonga", href: "https://linkedin.com/in/jeeldonga" },
+  { icon: Mail, label: "Email", value: "jeeldonga18@gmail.com", href: "mailto:jeeldonga18@gmail.com" },
+  { icon: Github, label: "GitHub", value: "github.com/jeeldonga", href: "https://github.com/JEELDONGA18" },
+  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/jeeldonga", href: "https://www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/" },
   { icon: MapPin, label: "Location", value: "Gujarat, India", href: null },
 ];
 

@@ -167,7 +167,7 @@ export const projects = [
     githubUrl: 'https://github.com/jeeldonga/smart-doc-ai',
     liveUrl: 'https://smart-doc-ai.vercel.app',
     featured: true,
-    category: 'ai-ml',
+    category: 'full-stack',
     status: 'completed',
   },
 

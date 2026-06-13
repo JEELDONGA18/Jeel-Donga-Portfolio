@@ -17,7 +17,7 @@ const quickInfo = [
 const focusTags = [
   "AI/ML Systems",
   "Computer Vision",
-  "RAG Pipelines",
+  "Research Prototyping",
   "FastAPI",
   "Full-Stack Development",
 ];
@@ -37,7 +37,7 @@ export function AboutSection() {
           <div className="lg:col-span-3">
             <ScrollReveal direction="up" delay={0.1}>
               <div className="space-y-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-                <p>
+                {/* <p>
                   I&apos;m a Computer Engineering student at{" "}
                   <span className="font-medium text-foreground">
                     Sarvajanik College of Engineering and Technology
@@ -49,7 +49,12 @@ export function AboutSection() {
                 <p>
                   My work spans large language model applications, medical image
                   segmentation research, real-time computer vision systems, and
-                  FastAPI backend services. Every project I take on is guided by a
+                </p> */}
+                <p>
+                  Computer Engineering student with experience in AI/ML, Data Science, FastAPI backend development, REST APIs, and full-stack web applications. Passionate about building intelligent systems that integrate AI, IoT, and embedded technologies to solve real-world challenges. Skilled in building scalable software solutions, integrating machine learning models, and developing intelligent systems using modern technologies. Eager to contribute technical expertise and continuously learn in fast-paced engineering environments. 
+                </p>
+                <p>
+                  Every project I take on is guided by a
                   simple question:{" "}
                   <em className="text-foreground">
                     &quot;Does this solve a real problem?&quot;

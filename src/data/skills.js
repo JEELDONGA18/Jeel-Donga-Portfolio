@@ -9,11 +9,11 @@ export const skillCategories = [
     icon: 'Brain',
     skills: ['Python', 'PyTorch', 'TensorFlow', 'OpenCV', 'Scikit-Learn', 'MONAI'],
   },
-  {
-    category: 'LLM & Generative AI',
-    icon: 'Sparkles',
-    skills: ['LangChain', 'RAG Pipelines', 'Vector Databases', 'Prompt Engineering', 'Embeddings'],
-  },
+  // {
+  //   category: 'LLM & Generative AI',
+  //   icon: 'Sparkles',
+  //   skills: ['LangChain', 'RAG Pipelines', 'Vector Databases', 'Prompt Engineering', 'Embeddings'],
+  // },
   {
     category: 'Frontend',
     icon: 'Monitor',
@@ -22,17 +22,17 @@ export const skillCategories = [
   {
     category: 'Backend',
     icon: 'Server',
-    skills: ['FastAPI', 'Node.js', 'Express.js', 'Flask', 'REST APIs'],
+    skills: ['FastAPI', 'Node.js', 'Flask', 'REST APIs'],
   },
   {
     category: 'Databases',
     icon: 'Database',
-    skills: ['PostgreSQL', 'MongoDB', 'Pinecone', 'ChromaDB'],
+    skills: ['MongoDB', 'MySQL', 'PostgreSQL'],
   },
   {
-    category: 'DevOps & Tools',
+    category: 'Tools',
     icon: 'Cloud',
-    skills: ['Docker', 'Git', 'GitHub Actions', 'Vercel', 'AWS'],
+    skills: ['Git', 'GitHub Actions', 'Vercel', 'AWS'],
   },
 ];
 
