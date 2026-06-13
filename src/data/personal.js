@@ -7,13 +7,13 @@ export const personal = {
   title: 'AI Engineer & Researcher',
   tagline: 'Building Intelligent Systems That Solve Real-World Problems.',
 
-  bio: `I'm a Computer Engineering student at Dharmsinh Desai University, specializing in AI/ML, Computer Vision, and backend development. I build end-to-end intelligent systems — from research prototypes to production-ready applications.`,
+  bio: `I'm a Computer Engineering student at Sarvajanik College of Engineering and Technology, specializing in AI/ML, Computer Vision, and backend development. I build end-to-end intelligent systems — from research prototypes to production-ready applications.`,
 
-  email: 'jeeldonga24@gmail.com',
-  github: 'https://github.com/jeeldonga',
-  linkedin: 'https://linkedin.com/in/jeeldonga',
+  email: 'jeeldonga18@gmail.com',
+  github: 'https://github.com/JEELDONGA18',
+  linkedin: 'https://www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/',
   location: 'Gujarat, India',
-  university: 'Dharmsinh Desai University',
+  university: 'Sarvajanik College of Engineering and Technology',
   degree: 'B.Tech Computer Engineering',
   availability: true,
   resumeUrl: '/resume/jeel-donga-resume.pdf',

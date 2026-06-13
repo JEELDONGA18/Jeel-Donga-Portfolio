@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

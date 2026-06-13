@@ -279,18 +279,14 @@ export function Navbar() {
         {/* Navbar container */}
         <nav
           className={cn(
-            "mx-auto max-w-6xl",
-            // Margins + rounding — floating style on scroll
-            scrolled
-              ? "mx-4 mt-3 sm:mx-6 lg:mx-auto rounded-2xl"
-              : "mx-0 mt-0 rounded-none",
-            // Glass background
+            "mx-4 sm:mx-6 lg:mx-auto max-w-6xl rounded-2xl",
+            // Glass background — always visible
             "glass transition-all duration-500",
             scrolled
-              ? "bg-surface-glass/90 shadow-lg shadow-black/5 border-surface-glass-border"
-              : "bg-transparent border-transparent shadow-none backdrop-blur-none",
-            // Padding shrinks on scroll
-            scrolled ? "px-4 py-2.5 sm:px-6" : "px-4 py-4 sm:px-8"
+              ? "mt-3 bg-surface-glass/90 shadow-lg shadow-black/5 border-surface-glass-border"
+              : "mt-4 bg-surface-glass/70 shadow-md shadow-black/3 border-surface-glass-border",
+            // Padding
+            scrolled ? "px-4 py-2.5 sm:px-6" : "px-5 py-3 sm:px-8"
           )}
         >
           <div className="flex items-center justify-between">

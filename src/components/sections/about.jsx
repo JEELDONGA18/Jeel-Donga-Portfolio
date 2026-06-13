@@ -10,7 +10,7 @@ import { GlassCard } from "@/components/shared/glass-card";
 const quickInfo = [
   { icon: GraduationCap, text: "B.Tech Computer Engineering" },
   { icon: MapPin, text: "Gujarat, India" },
-  { icon: Building, text: "Dharmsinh Desai University" },
+  { icon: Building, text: "Sarvajanik College of Engineering and Technology" },
 ];
 
 /* Current areas of focus */
@@ -40,7 +40,7 @@ export function AboutSection() {
                 <p>
                   I&apos;m a Computer Engineering student at{" "}
                   <span className="font-medium text-foreground">
-                    Dharmsinh Desai University
+                    Sarvajanik College of Engineering and Technology
                   </span>
                   , specializing in AI/ML, Computer Vision, and scalable backend
                   systems. I build end-to-end intelligent systems — from research
