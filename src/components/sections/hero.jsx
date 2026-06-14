@@ -54,6 +54,8 @@ export function HeroSection() {
               "AI Engineer", 2000,
               "ML Researcher", 2000,
               "Backend Developer", 2000,
+              "Data Science Enthusiast", 2000,
+              "Full-Stack Developer", 2000,
             ]}
             wrapper="span"
             speed={45}
@@ -85,7 +87,7 @@ export function HeroSection() {
             Resume
           </MagneticButton>
 
-          <MagneticButton variant="secondary" href="https://github.com/jeeldonga" target="_blank" rel="noopener noreferrer">
+          <MagneticButton variant="secondary" href="https://github.com/JEELDONGA18" target="_blank" rel="noopener noreferrer">
             <Github className="h-4 w-4" />
             GitHub
           </MagneticButton>
