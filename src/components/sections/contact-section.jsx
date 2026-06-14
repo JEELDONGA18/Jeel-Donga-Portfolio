@@ -11,8 +11,8 @@ import { GithubIcon as Github, LinkedinIcon as Linkedin } from "@/components/sha
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "jeeldonga18@gmail.com", href: "mailto:jeeldonga18@gmail.com" },
-  { icon: Github, label: "GitHub", value: "github.com/jeeldonga", href: "https://github.com/JEELDONGA18" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/jeeldonga", href: "https://www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/" },
+  { icon: Github, label: "GitHub", value: "github.com/JEELDONGA18", href: "https://github.com/JEELDONGA18" },
+  { icon: Linkedin, label: "LinkedIn", value: "www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/", href: "https://www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/" },
   { icon: MapPin, label: "Location", value: "Gujarat, India", href: null },
 ];
 

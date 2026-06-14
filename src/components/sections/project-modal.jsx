@@ -17,13 +17,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { GithubIcon as Github } from "@/components/shared/brand-icons";
+import Image from "next/image";
 
 const tabs = [
   { id: "overview", label: "Overview" },
-  { id: "architecture", label: "Architecture" },
   { id: "challenges", label: "Challenges" },
   { id: "metrics", label: "Metrics" },
-  { id: "future", label: "Future" },
 ];
 
 export function ProjectModal({ project, isOpen, onClose }) {
@@ -109,7 +108,7 @@ export function ProjectModal({ project, isOpen, onClose }) {
             </div>
 
             {/* ── Tab Content ────────────────────────────────────────── */}
-            <div className="p-6 max-h-[60vh] overflow-y-auto">
+            <div className="p-6 max-h-[75vh] overflow-y-auto">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -119,10 +118,8 @@ export function ProjectModal({ project, isOpen, onClose }) {
                   transition={{ duration: 0.2 }}
                 >
                   {activeTab === "overview" && <OverviewTab project={project} />}
-                  {activeTab === "architecture" && <ArchitectureTab project={project} />}
                   {activeTab === "challenges" && <ChallengesTab project={project} />}
                   {activeTab === "metrics" && <MetricsTab project={project} />}
-                  {activeTab === "future" && <FutureTab project={project} />}
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -172,17 +169,6 @@ function OverviewTab({ project }) {
         </div>
       </div>
 
-      {/* Motivation */}
-      <div className="flex gap-3">
-        <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <Lightbulb className="h-4 w-4 text-amber-400" />
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold text-foreground mb-1">Motivation</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">{project.motivation}</p>
-        </div>
-      </div>
-
       {/* Solution */}
       <div className="flex gap-3">
         <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -208,48 +194,39 @@ function OverviewTab({ project }) {
           </div>
         </div>
       )}
-    </div>
-  );
-}
 
-function ArchitectureTab({ project }) {
-  const arch = project.architecture;
-  if (!arch) return <p className="text-sm text-muted-foreground">Architecture details coming soon.</p>;
+      {/* Screenshots */}
+      {project.screenshots && project.screenshots.length > 0 && (
+      <div>
+        <h4 className="text-sm font-semibold text-foreground mb-3">
+          Screenshots
+        </h4>
 
-  return (
-    <div className="space-y-6">
-      <p className="text-sm text-muted-foreground leading-relaxed">{arch.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {project.screenshots.map((shot, i) => (
+            <div
+              key={i}
+              className="overflow-hidden rounded-xl border border-border bg-card"
+            >
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+              />
 
-      {/* Layer diagram */}
-      <div className="space-y-3">
-        {(arch.layers || []).map((layer, i) => (
-          <div key={i} className="relative">
-            <div className="flex items-stretch gap-3">
-              {/* Layer number */}
-              <div className="flex flex-col items-center">
-                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
-                  {i + 1}
-                </div>
-                {i < arch.layers.length - 1 && (
-                  <div className="flex-1 w-px bg-border my-1" />
-                )}
-              </div>
-              {/* Layer content */}
-              <div className="flex-1 p-4 rounded-lg bg-muted/20 border border-border mb-1">
-                <h5 className="text-sm font-semibold text-foreground">{layer.name}</h5>
-                <p className="text-xs text-muted-foreground mt-1">{layer.description}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {(Array.isArray(layer.technologies) ? layer.technologies : layer.technologies.split(", ")).map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 rounded text-[10px] bg-primary/10 text-primary font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <div className="p-3 border-t border-border">
+                <p className="text-xs text-muted-foreground">
+                  {shot.alt}
+                </p>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    )}
     </div>
   );
 }
@@ -275,21 +252,6 @@ function ChallengesTab({ project }) {
           ))}
         </div>
       )}
-
-      {/* Lessons Learned */}
-      {project.lessonsLearned && (
-        <div>
-          <h4 className="text-sm font-semibold text-foreground mb-3">Lessons Learned</h4>
-          <ul className="space-y-2">
-            {project.lessonsLearned.map((lesson, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <Lightbulb className="h-3.5 w-3.5 text-amber-400 mt-0.5 flex-shrink-0" />
-                {lesson}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
@@ -309,28 +271,6 @@ function MetricsTab({ project }) {
           <p className="text-xs text-muted-foreground mt-1">{metric.description}</p>
         </div>
       ))}
-    </div>
-  );
-}
-
-function FutureTab({ project }) {
-  if (!project.futureRoadmap || project.futureRoadmap.length === 0) {
-    return <p className="text-sm text-muted-foreground">Roadmap coming soon.</p>;
-  }
-
-  return (
-    <div>
-      <h4 className="text-sm font-semibold text-foreground mb-4">Future Roadmap</h4>
-      <div className="space-y-3">
-        {project.futureRoadmap.map((item, i) => (
-          <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-muted/20 border border-border">
-            <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-xs font-bold text-primary">
-              {i + 1}
-            </div>
-            <p className="text-sm text-muted-foreground">{item}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

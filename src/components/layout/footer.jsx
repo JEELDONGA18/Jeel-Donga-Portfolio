@@ -26,19 +26,19 @@ const quickLinks = [
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/jeeldonga",
+    href: "https://github.com/JEELDONGA18",
     icon: Github,
     hoverColor: "hover:text-foreground",
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/jeeldonga",
+    href: "https://www.linkedin.com/in/jeel-hasmukhbhai-donga-226441290/",
     icon: Linkedin,
     hoverColor: "hover:text-[#0A66C2]",
   },
   {
     name: "Email",
-    href: "mailto:jeeldonga24@gmail.com",
+    href: "mailto:jeeldonga18@gmail.com",
     icon: Mail,
     hoverColor: "hover:text-accent",
   },
@@ -239,7 +239,7 @@ export function Footer() {
 
               {/* CTA button */}
               <motion.a
-                href="mailto:jeeldonga24@gmail.com"
+                href="mailto:jeeldonga18@gmail.com"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={cn(

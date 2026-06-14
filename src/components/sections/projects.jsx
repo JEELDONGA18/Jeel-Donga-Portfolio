@@ -24,6 +24,7 @@ const categories = [
   { id: "all", label: "All", icon: Sparkles },
   { id: "ai-ml", label: "AI / ML", icon: Brain },
   { id: "full-stack", label: "Full-Stack", icon: Layers },
+  { id: "data-science", label: "Data Science", icon: FlaskConical },
   { id: "research", label: "Research", icon: FlaskConical },
 ];
 
@@ -50,6 +51,7 @@ const cardAccents = [
 const categoryColors = {
   "ai-ml": "bg-violet-500/20 text-violet-300 border-violet-500/30",
   "full-stack": "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
+  "data-science": "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
   research: "bg-amber-500/20 text-amber-300 border-amber-500/30",
 };
 
@@ -132,8 +134,7 @@ export function FeaturedProjects({ className }) {
         {/* ── Section heading ──────────────────────────────────────────── */}
         <SectionHeading
           title="Featured Projects"
-          subtitle="Deep-dive case studies of production AI systems I've built"
-          gradient
+          subtitle="Projects focused on AI, Computer Vision, Full-Stack Development, and Data Analytics"          gradient
         />
 
         {/* ── Category filter tabs ─────────────────────────────────────── */}
@@ -196,7 +197,7 @@ export function FeaturedProjects({ className }) {
                 key={project.id}
                 project={project}
                 index={idx}
-                onViewCaseStudy={() => openModal(project)}
+                onExploreProject={() => openModal(project)}
               />
             ))}
           </AnimatePresence>
@@ -226,7 +227,7 @@ export function FeaturedProjects({ className }) {
 
 // ─── Project Card ───────────────────────────────────────────────────────────
 
-function ProjectCard({ project, index, onViewCaseStudy }) {
+function ProjectCard({ project, index, onExploreProject }) {
   const gradientIdx = index % cardGradients.length;
   const gradient = cardGradients[gradientIdx];
   const accent = cardAccents[gradientIdx];
@@ -234,9 +235,9 @@ function ProjectCard({ project, index, onViewCaseStudy }) {
   const catColor = categoryColors[project.category] || categoryColors["ai-ml"];
 
   // Show first 3 metrics only
-  const displayMetrics = (project.metrics || []).slice(0, 4);
+  const displayMetrics = (project.metrics || []).slice(0, 3);
   // Show first 5 tech items inline, rest as count
-  const visibleTech = (project.techStack || []).slice(0, 5);
+  const visibleTech = (project.techStack || []).slice(0, 7);
   const remainingTech = (project.techStack || []).length - visibleTech.length;
 
   return (
@@ -290,7 +291,9 @@ function ProjectCard({ project, index, onViewCaseStudy }) {
                 ? "AI / ML"
                 : project.category === "full-stack"
                   ? "Full-Stack"
-                  : "Research"}
+                  : project.category === "data-science"
+                    ? "Data Science"
+                    : "Research"}
             </span>
 
             {/* Status badge */}
@@ -318,6 +321,24 @@ function ProjectCard({ project, index, onViewCaseStudy }) {
           <p className="mb-2 text-sm font-medium text-indigo-400 dark:text-indigo-300">
             {project.subtitle}
           </p>
+
+          <div
+            className={cn(
+              "mb-3 text-xs font-medium",
+              project.category === "ai-ml" && "text-violet-400",
+              project.category === "full-stack" && "text-cyan-400",
+              project.category === "data-science" && "text-emerald-400"
+            )}
+          >
+            {project.category === "ai-ml" &&
+              "Computer Vision • Deep Learning • AI Systems"}
+
+            {project.category === "full-stack" &&
+              "Full-Stack • FastAPI • Authentication • AI Integration"}
+
+            {project.category === "data-science" &&
+              "Data Analytics • Forecasting • Geo-Spatial Analysis"}
+          </div>
 
           {/* Description — clamp to 3 lines */}
           <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
@@ -365,7 +386,7 @@ function ProjectCard({ project, index, onViewCaseStudy }) {
           <div className="flex items-center gap-3 border-t border-white/5 pt-4">
             {/* View Case Study button */}
             <button
-              onClick={onViewCaseStudy}
+              onClick={onExploreProject}
               className={cn(
                 "group/btn inline-flex items-center gap-2 rounded-lg",
                 "bg-indigo-500/15 px-4 py-2.5 text-sm font-medium text-indigo-300",
@@ -374,7 +395,7 @@ function ProjectCard({ project, index, onViewCaseStudy }) {
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
               )}
             >
-              View Case Study
+              Explore Project
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
             </button>
 
