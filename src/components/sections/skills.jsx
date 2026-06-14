@@ -7,7 +7,6 @@ import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { GlassCard } from "@/components/shared/glass-card";
 import {
   Brain,
-  Sparkles,
   Monitor,
   Server,
   Database,
@@ -18,10 +17,7 @@ import {
   Layers,
   Globe,
   GitBranch,
-  Box,
   Zap,
-  Search,
-  MessageSquare,
   FileCode,
   Palette,
   Play,
@@ -30,36 +26,46 @@ import {
 
 /* Icon map for individual skills */
 const skillIconMap = {
+  // AI & Machine Learning
   Python: Code,
   PyTorch: Zap,
   TensorFlow: Cpu,
   OpenCV: Eye,
+  YOLOv8: Eye,
   "Scikit-Learn": Layers,
-  MONAI: Brain,
-  LangChain: Sparkles,
-  "RAG Pipelines": Search,
-  "Vector Databases": Database,
-  "Prompt Engineering": MessageSquare,
-  Embeddings: Layers,
+
+  // Data Science
+  Pandas: Database,
+  NumPy: Layers,
+  Matplotlib: Monitor,
+  Seaborn: Monitor,
+  Plotly: Monitor,
+  "Power BI": Database,
+
+  // Frontend
   React: Globe,
   "Next.js": Globe,
   JavaScript: FileCode,
   "Tailwind CSS": Palette,
   "Framer Motion": Play,
+
+  // Backend
   FastAPI: Zap,
   "Node.js": Server,
-  "Express.js": Server,
   Flask: Code,
   "REST APIs": Globe,
-  PostgreSQL: Database,
+
+  // Databases
   MongoDB: Database,
-  Pinecone: Search,
-  ChromaDB: Database,
-  Docker: Box,
+  MySQL: Database,
+
+  // Tools & Technologies
   Git: GitBranch,
   "GitHub Actions": GitBranch,
   Vercel: Triangle,
-  AWS: Cloud,
+  "Automated Workflows (N8N)": Zap,
+  IoT: Cpu,
+  Robotics: Brain,
 };
 
 /* Category config */
@@ -68,13 +74,13 @@ const categories = [
     name: "AI & Machine Learning",
     icon: Brain,
     gradient: "from-violet-500 to-purple-600",
-    skills: ["Python", "PyTorch", "TensorFlow", "OpenCV", "Scikit-Learn", "MONAI"],
+    skills: ["Python", "PyTorch", "TensorFlow", "OpenCV", "YOLOv8", "Scikit-Learn"],
   },
   {
-    name: "LLM & Generative AI",
-    icon: Sparkles,
-    gradient: "from-cyan-500 to-blue-600",
-    skills: ["LangChain", "RAG Pipelines", "Vector Databases", "Prompt Engineering", "Embeddings"],
+    name: "Data Science",
+    icon: Database,
+    gradient: "from-emerald-500 to-green-600",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "Power BI"],
   },
   {
     name: "Frontend",
@@ -83,22 +89,16 @@ const categories = [
     skills: ["React", "Next.js", "JavaScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    name: "Backend",
+    name: "Backend & Databases",
     icon: Server,
     gradient: "from-orange-500 to-red-600",
-    skills: ["FastAPI", "Node.js", "Express.js", "Flask", "REST APIs"],
+    skills: ["FastAPI", "Node.js", "Flask", "REST APIs", "MongoDB", "MySQL"],
   },
   {
-    name: "Databases",
-    icon: Database,
-    gradient: "from-amber-500 to-yellow-600",
-    skills: ["PostgreSQL", "MongoDB", "Pinecone", "ChromaDB"],
-  },
-  {
-    name: "DevOps & Tools",
+    name: "Automation & Emerging Tech",
     icon: Cloud,
     gradient: "from-sky-500 to-indigo-600",
-    skills: ["Docker", "Git", "GitHub Actions", "Vercel", "AWS"],
+    skills: ["Git", "GitHub Actions", "Vercel", "Automated Workflows (N8N)", "IoT", "Robotics"],
   },
 ];
 
@@ -108,16 +108,16 @@ export function SkillsSection() {
       <div className="container-custom">
         <SectionHeading
           title="Skills & Expertise"
-          subtitle="Technologies I work with daily"
+          subtitle="AI, Full-Stack, Data Science, and Emerging Technologies used across real-world projects and research"
           align="center"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {categories.map((category, index) => {
             const CategoryIcon = category.icon;
             return (
               <ScrollReveal key={category.name} direction="up" delay={index * 0.08}>
-                <GlassCard hover className="p-5 h-full">
+                <GlassCard hover className="p-6 h-full">
                   {/* Category header */}
                   <div className="flex items-center gap-3 mb-4">
                     <div
@@ -128,24 +128,24 @@ export function SkillsSection() {
                     >
                       <CategoryIcon className="h-5 w-5 text-white" />
                     </div>
-                    <h3 className="text-base font-semibold text-foreground">
+                    <h3 className="text-lg font-semibold text-foreground">
                       {category.name}
                     </h3>
                   </div>
 
                   {/* Skill tags with icons */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {category.skills.map((skill) => {
                       const SkillIcon = skillIconMap[skill] || Code;
                       return (
-                        <motion.span
+                        <motion.div
                           key={skill}
-                          whileHover={{ scale: 1.05 }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-default"
+                          whileHover={{ scale: 1.03 }}
+                          className="flex items-center gap-2 rounded-lg border border-border/50 bg-background/40 px-3 py-2 text-[13px] transition-colors hover:bg-primary/5"
                         >
-                          <SkillIcon className="h-3.5 w-3.5 text-primary/70" />
-                          {skill}
-                        </motion.span>
+                          <SkillIcon className="h-4 w-4 text-primary" />
+                          <span>{skill}</span>
+                        </motion.div>
                       );
                     })}
                   </div>
