@@ -5,21 +5,24 @@ import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { GlassCard } from "@/components/shared/glass-card";
+import Image from "next/image";
+import { Brain, Trophy, Code } from "lucide-react";
 
 /* Quick info items with Lucide icons */
 const quickInfo = [
-  { icon: GraduationCap, text: "B.Tech Computer Engineering" },
-  { icon: MapPin, text: "Gujarat, India" },
-  { icon: Building, text: "Sarvajanik College of Engineering and Technology" },
+  { icon: Code, text: "4+ Major Projects" },
+  { icon: Trophy, text: "₹60K Innovation Grant" },
+  { icon: Brain, text: "AI & Full-Stack Developer" },
 ];
 
 /* Current areas of focus */
 const focusTags = [
-  "AI/ML Systems",
+  "Artificial Intelligence",
   "Computer Vision",
-  "Research Prototyping",
-  "FastAPI",
+  "Data Science",
   "Full-Stack Development",
+  "Research",
+  "Automation",
 ];
 
 export function AboutSection() {
@@ -28,7 +31,7 @@ export function AboutSection() {
       <div className="container-custom">
         <SectionHeading
           title="About Me"
-          subtitle="The journey from curiosity to building real AI systems."
+          subtitle="Building intelligent software through AI, data science, research, and engineering."
           gradient
         />
 
@@ -37,29 +40,48 @@ export function AboutSection() {
           <div className="lg:col-span-3">
             <ScrollReveal direction="up" delay={0.1}>
               <div className="space-y-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-                {/* <p>
-                  I&apos;m a Computer Engineering student at{" "}
-                  <span className="font-medium text-foreground">
-                    Sarvajanik College of Engineering and Technology
-                  </span>
-                  , specializing in AI/ML, Computer Vision, and scalable backend
-                  systems. I build end-to-end intelligent systems — from research
-                  prototypes to production-ready applications.
+                <p>
+                  I'm a Computer Engineering student passionate about building intelligent
+                  software that solves practical problems. My interests span Artificial
+                  Intelligence, Computer Vision, Data Science, and Full-Stack Development,
+                  where I combine research, engineering, and product thinking to create
+                  impactful solutions.
                 </p>
+
                 <p>
-                  My work spans large language model applications, medical image
-                  segmentation research, real-time computer vision systems, and
-                </p> */}
-                <p>
-                  Computer Engineering student with experience in AI/ML, Data Science, FastAPI backend development, REST APIs, and full-stack web applications. Passionate about building intelligent systems that integrate AI, IoT, and embedded technologies to solve real-world challenges. Skilled in building scalable software solutions, integrating machine learning models, and developing intelligent systems using modern technologies. Eager to contribute technical expertise and continuously learn in fast-paced engineering environments. 
+                  I've worked on AI-powered document intelligence platforms, computer vision
+                  systems for public transportation analytics, EV trend forecasting dashboards,
+                  and medical image segmentation research. I enjoy transforming ideas into
+                  real-world applications through modern technologies and continuous learning.
                 </p>
+
                 <p>
-                  Every project I take on is guided by a
-                  simple question:{" "}
+                  Every project I build starts with a simple question:
                   <em className="text-foreground">
-                    &quot;Does this solve a real problem?&quot;
+                    {" "}“Can this create meaningful value for someone?”
                   </em>
                 </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Quick info — icons instead of emojis */}
+            <ScrollReveal direction="right" delay={0.35}>
+              <div className="my-3 grid w-full grid-cols-3 gap-3">
+                {quickInfo.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <GlassCard
+                      key={item.text}
+                      hover
+                      className="flex items-center gap-3 px-5 py-3"
+                    >
+                      <Icon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm font-medium text-foreground">
+                        {item.text}
+                      </span>
+                    </GlassCard>
+                  );
+                })}
               </div>
             </ScrollReveal>
 
@@ -87,40 +109,25 @@ export function AboutSection() {
             </ScrollReveal>
           </div>
 
-          {/* Right — photo + quick info */}
-          <div className="flex flex-col items-center gap-6 lg:col-span-2">
-            {/* Photo placeholder */}
+          {/* Right — photo */}
+          <div className="flex flex-col items-center justify-center lg:col-span-2">
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="gradient-border relative mx-auto h-[320px] w-[260px] overflow-hidden rounded-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-cyan-500/20" />
-                <div className="relative flex h-full w-full flex-col items-center justify-center">
-                  <span className="text-7xl font-black tracking-tighter bg-gradient-to-br from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
-                    JD
-                  </span>
-                </div>
-                <div className="absolute left-3 top-3 h-8 w-8 rounded-tl-lg border-l-2 border-t-2 border-primary/30" />
-                <div className="absolute bottom-3 right-3 h-8 w-8 rounded-br-lg border-b-2 border-r-2 border-primary/30" />
-              </div>
-            </ScrollReveal>
+              <div className="relative">
+                
+                {/* Soft Glow */}
+                <div className="absolute -inset-6 rounded-3xl bg-primary/10 blur-3xl" />
 
-            {/* Quick info — icons instead of emojis */}
-            <ScrollReveal direction="right" delay={0.35}>
-              <div className="flex w-full max-w-[260px] flex-col gap-3">
-                {quickInfo.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <GlassCard
-                      key={item.text}
-                      hover
-                      className="flex items-center gap-3 px-5 py-3"
-                    >
-                      <Icon className="h-4 w-4 text-primary flex-shrink-0" />
-                      <span className="text-sm font-medium text-foreground">
-                        {item.text}
-                      </span>
-                    </GlassCard>
-                  );
-                })}
+                {/* Image */}
+                <div className="relative mx-auto h-[470px] w-[340px] overflow-hidden rounded-2xl">
+                  <Image
+                    src="/Jeel_Donga.jpg"
+                    alt="Jeel Donga"
+                    fill
+                    priority
+                    className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                </div>
+
               </div>
             </ScrollReveal>
           </div>
