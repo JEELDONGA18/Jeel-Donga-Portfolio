@@ -2,15 +2,11 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import {
-  Sun,
-  Moon,
   Menu,
   X,
   Command,
-  ChevronUp,
 } from "lucide-react";
 
 /* ─── Navigation Data ─── */
@@ -33,66 +29,8 @@ function scrollToSection(href, callback) {
   callback?.();
 }
 
-/* ─── Theme Toggle Button ─── */
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
-    return (
-      <div className="h-9 w-9 rounded-full bg-secondary animate-pulse" />
-    );
-  }
-
-  const isDark = theme === "dark";
-
-  return (
-    <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={cn(
-        "relative flex h-9 w-9 items-center justify-center rounded-full",
-        "bg-secondary/80 hover:bg-secondary",
-        "border border-surface-glass-border",
-        "text-foreground transition-colors duration-300",
-        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      )}
-      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-    >
-      <AnimatePresence mode="wait" initial={false}>
-        {isDark ? (
-          <motion.span
-            key="sun"
-            initial={{ rotate: -90, opacity: 0, scale: 0 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: 90, opacity: 0, scale: 0 }}
-            transition={{ duration: 0.25 }}
-            className="absolute"
-          >
-            <Sun className="h-4 w-4" />
-          </motion.span>
-        ) : (
-          <motion.span
-            key="moon"
-            initial={{ rotate: 90, opacity: 0, scale: 0 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: -90, opacity: 0, scale: 0 }}
-            transition={{ duration: 0.25 }}
-            className="absolute"
-          >
-            <Moon className="h-4 w-4" />
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </motion.button>
-  );
-}
-
 /* ─── Command Palette Trigger ─── */
-function CommandButton() {
+function CommandButton({ onClick }) {
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
@@ -106,6 +44,7 @@ function CommandButton() {
         "focus-visible:ring-2 focus-visible:ring-ring"
       )}
       aria-label="Open command palette"
+      onClick={onClick}
     >
       <Command className="h-3 w-3" />
       <span>K</span>
@@ -207,14 +146,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
                 );
               })}
             </div>
-
-            {/* Bottom section */}
-            <div className="border-t border-border px-6 py-5">
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Theme</span>
-                <ThemeToggle />
-              </div>
-            </div>
           </motion.nav>
         </>
       )}
@@ -229,6 +160,23 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [commandOpen, setCommandOpen] = useState(false);
+  
+  /* ── Command palette shortcut ── */
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        setCommandOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   /* ── Scroll detection ── */
   useEffect(() => {
@@ -370,12 +318,7 @@ export function Navbar() {
             {/* ── Right side actions ── */}
             <div className="flex items-center gap-2">
               {/* Command palette trigger — desktop only */}
-              <CommandButton />
-
-              {/* Theme toggle — desktop only (mobile has it in menu) */}
-              <div className="hidden lg:block">
-                <ThemeToggle />
-              </div>
+              <CommandButton onClick={() => setCommandOpen(true)} />
 
               {/* Mobile hamburger */}
               <motion.button
@@ -402,6 +345,47 @@ export function Navbar() {
         onClose={() => setMobileOpen(false)}
         activeSection={activeSection}
       />
+
+      {/* Command palette overlay */}
+      <AnimatePresence>
+        {commandOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+              onClick={() => setCommandOpen(false)}
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              className="fixed left-1/2 top-24 z-[101] w-full max-w-lg -translate-x-1/2 rounded-2xl border border-border bg-card p-4 shadow-2xl"
+            >
+              <h3 className="mb-4 text-sm font-semibold text-muted-foreground">
+                Quick Navigation
+              </h3>
+
+              <div className="space-y-2">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => {
+                      scrollToSection(link.href);
+                      setCommandOpen(false);
+                    }}
+                    className="w-full rounded-lg px-4 py-3 text-left hover:bg-secondary"
+                  >
+                    {link.name}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

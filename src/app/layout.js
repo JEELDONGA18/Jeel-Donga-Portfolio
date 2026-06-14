@@ -39,7 +39,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jeeldonga.com",
+    url: "https://jeeldonga.me",
     title: "Jeel Donga — AI Engineer & Researcher",
     description:
       "Building production-ready AI systems that solve real-world problems.",
