@@ -207,24 +207,24 @@ export const projects = [
       },
     ],
 
-    screenshots: [
-      {
-        src: '/images/projects/transitguard/passenger-counting.png',
-        alt: 'Real-time passenger counting and occupancy estimation dashboard',
-      },
-      {
-        src: '/images/projects/transitguard/revenue-analytics.png',
-        alt: 'Revenue leakage detection and ticket verification analytics dashboard',
-      },
-      {
-        src: '/images/projects/transitguard/operations-dashboard.png',
-        alt: 'Public transport operational analytics and route monitoring dashboard',
-      },
-    ],
+    // screenshots: [
+    //   {
+    //     src: '/images/projects/transitguard/passenger-counting.png',
+    //     alt: 'Real-time passenger counting and occupancy estimation dashboard',
+    //   },
+    //   {
+    //     src: '/images/projects/transitguard/revenue-analytics.png',
+    //     alt: 'Revenue leakage detection and ticket verification analytics dashboard',
+    //   },
+    //   {
+    //     src: '/images/projects/transitguard/operations-dashboard.png',
+    //     alt: 'Public transport operational analytics and route monitoring dashboard',
+    //   },
+    // ],
 
-    githubUrl: 'https://github.com/jeeldonga/transitguard',
+    githubUrl: '',
 
-    liveUrl: 'https://transitguard-demo.vercel.app',
+    liveUrl: '',
 
     featured: true,
     category: 'ai-ml',
