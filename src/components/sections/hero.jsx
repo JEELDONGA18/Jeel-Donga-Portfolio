@@ -82,7 +82,7 @@ export function HeroSection() {
             View Projects
           </MagneticButton>
 
-          <MagneticButton variant="secondary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          <MagneticButton variant="secondary" href="/Jeel Donga Resume.pdf" target="_blank" rel="noopener noreferrer">
             <Download className="h-4 w-4" />
             Resume
           </MagneticButton>
