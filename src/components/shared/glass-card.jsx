@@ -31,8 +31,7 @@ export function GlassCard({
       className={cn(
         "relative overflow-hidden rounded-xl",
         // Glassmorphism base
-        "bg-white/70 backdrop-blur-xl dark:bg-white/5",
-        "border border-gray-200/50 dark:border-white/10",
+        "glass",
         // Hover glow effect
         hover && [
           "transition-shadow duration-300",

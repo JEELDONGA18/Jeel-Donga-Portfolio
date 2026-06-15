@@ -43,8 +43,8 @@
   --gradient-warm-to: oklch(0.65 0.2 40);
 
   /* Surface tokens */
-  --surface-glass: oklch(0.18 0.02 260 / 0.6);
-  --surface-glass-border: oklch(0.95 0.01 260 / 0.08);
+  --surface-glass: rgba(8, 15, 30, 0.85);
+  --surface-glass-border: rgba(124, 58, 237, 0.12);
   --surface-elevated: oklch(0.2 0.02 260);
 
   /* Glow effects */
