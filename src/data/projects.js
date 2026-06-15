@@ -480,7 +480,108 @@ export const projects = [
     featured: true,
     category: 'research',
     status: 'completed',
-  }
+  },
+  {
+    id: 'proj-005',
+    slug: 'connector-defect-detection',
+    title: 'AI-Based Connector Defect Detection',
+    subtitle: 'Industrial Quality Inspection using Computer Vision & IoT',
+
+    description:
+      'An AI-powered industrial inspection system that automates connector quality analysis using Computer Vision, deep learning, and real-time hardware integration. The system detects manufacturing defects, classifies fault types, and triggers automated alerts for quality control workflows.',
+
+    problem:
+      'Manual inspection of industrial connectors is time-consuming, error-prone, and difficult to scale in high-volume manufacturing environments. Human inspectors may miss subtle defects, resulting in reduced product quality and increased operational costs.',
+
+    solution:
+      'Developed a real-time inspection platform using TensorFlow, OpenCV, and live camera feeds to automatically detect connector defects and classify fault categories. Integrated hardware-based indicators and alert mechanisms to enable automated quality-control decisions and improve inspection efficiency.',
+
+    features: [
+    {
+      title: 'Real-Time Defect Detection',
+      description:
+        'Captures live images from industrial cameras and performs automated defect inspection in real time.',
+    },
+    {
+      title: 'AI-Based Fault Classification',
+      description:
+        'Deep learning models classify connector defects and identify fault categories with high accuracy.',
+    },
+    {
+      title: 'Automated Quality Control',
+      description:
+        'Reduces manual inspection effort through automated pass/fail decision-making.',
+    },
+    {
+      title: 'Hardware Alert Integration',
+      description:
+        'Integrated LEDs, indicators, and alert mechanisms for immediate operator feedback.',
+    },
+    {
+      title: 'Live Inspection Dashboard',
+      description:
+        'Displays inspection results, defect status, and operational analytics in real time.',
+    },
+    ],
+
+    techStack: [
+      'Python',
+      'TensorFlow',
+      'OpenCV',
+      'NumPy',
+      'Computer Vision',
+      'IoT',
+      'Embedded Systems',
+      'Industrial Cameras',
+    ],
+
+    architecture: {
+      description:
+        'Camera Input → Image Processing → Defect Detection Model → Fault Classification → Hardware Alerts → Inspection Dashboard',
+    },
+
+    challenges: [
+      {
+        challenge:
+          'Maintaining detection accuracy under varying lighting and industrial conditions.',
+        solution:
+          'Applied image preprocessing, normalization, and data augmentation techniques to improve model robustness.',
+      },
+      {
+        challenge:
+          'Integrating AI predictions with hardware-based quality control workflows.',
+        solution:
+          'Developed a communication layer connecting the defect detection system with external indicators and alert mechanisms.',
+      },
+    ],
+
+    metrics: [
+      {
+        label: 'Detection Accuracy',
+        value: '90.32%',
+        description:
+          'Overall defect classification accuracy achieved on industrial connector datasets.',
+      },
+      {
+        label: 'Inspection Mode',
+        value: 'Real-Time',
+        description:
+          'Live camera-based inspection and fault detection.',
+      },
+      {
+        label: 'Domain',
+        value: 'Industry 4.0',
+        description:
+          'AI-driven manufacturing quality inspection.',
+      },
+    ],
+
+    githubUrl: '',
+
+    featured: true,
+    category: 'ai-ml',
+    status: 'completed',
+    }
 ];
 
 /**

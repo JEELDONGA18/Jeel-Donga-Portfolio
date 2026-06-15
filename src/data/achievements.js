@@ -26,17 +26,17 @@ export const achievements = [
     icon: 'Award',
     project: 'multi-organ-segmentation',
   },
-  {
-    id: 'ach-003',
-    title: 'National Hackathon Finalist',
-    description:
-      'TransitGuard reached the finalist round at a prestigious national-level hackathon, competing against 200+ teams from top engineering colleges. Recognized for innovative use of computer vision in public safety.',
-    value: null,
-    category: 'hackathon',
-    date: '2024',
-    icon: 'Medal',
-    project: 'transitguard',
-  },
+  // {
+  //   id: 'ach-003',
+  //   title: 'National Hackathon Finalist',
+  //   description:
+  //     'TransitGuard reached the finalist round at a prestigious national-level hackathon, competing against 200+ teams from top engineering colleges. Recognized for innovative use of computer vision in public safety.',
+  //   value: null,
+  //   category: 'hackathon',
+  //   date: '2024',
+  //   icon: 'Medal',
+  //   project: 'transitguard',
+  // },
   {
     id: 'ach-004',
     title: 'Technical Leadership Award',

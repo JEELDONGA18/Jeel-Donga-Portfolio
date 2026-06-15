@@ -15,6 +15,7 @@ import {
   Brain,
   FlaskConical,
   Sparkles,
+  DatabaseBackupIcon,
 } from "lucide-react";
 import { GithubIcon as Github } from "@/components/shared/brand-icons";
 
@@ -25,7 +26,7 @@ const categories = [
   { id: "ai-ml", label: "AI / ML", icon: Brain },
   { id: "full-stack", label: "Full-Stack", icon: Layers },
   { id: "data-science", label: "Data Science", icon: FlaskConical },
-  { id: "research", label: "Research", icon: FlaskConical },
+  { id: "research", label: "Research", icon: DatabaseBackupIcon },
 ];
 
 // ─── Unique gradient for each project card header ────────────────────────────
